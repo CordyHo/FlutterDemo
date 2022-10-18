@@ -36,7 +36,7 @@ void main() {
   //final 运行时常量
   final myDartClass = MyDartClass();
   print('$str1 $str2 ${myDartClass.num5} ${MyDartClass.num6}');
-  doSomeChange(list1, str1, myDartClass, growable: true, news: 'new');
+  doSomeChange(list1, str1, myDartClass, sum: 3, growable: true, news: 'new');
   list3?.add(0);
   list3?[0] = 1;
   print(list1);
@@ -69,7 +69,7 @@ void main() {
   print(schoolIdol.values
       .where((element) => element == 16)
       .toList(growable: false));
-  List<int> list = [8, 12, 4, 1, 17, 33, 10];
+  List<int> list = [8, 12, 4, 3, 17, 33, 10];
   var res = set.lastWhere((element) => element is String, orElse: () => -1);
   list1.forEach((element) {
     print("33  =$element");
@@ -83,6 +83,40 @@ void main() {
   Set set2 = {};
   set2.addAll({23, 23, 3, '33'});
   print(set2);
+  customSort(list);
+}
+
+// [8, 12, 4, 1, 17, 33, 10]
+void customSort(List<int> list) {
+  print("排序前的结果$list");
+  // for (int i = 1; i < list.length; i++) {
+  //   int value = list[i];
+  //   int j = i - 1;
+  //   for (; j >= 0; j--) {
+  //     if (list[j] > value) {
+  //       list[j + 1] = list[j];
+  //     } else {
+  //       break;
+  //     }
+  //   }
+  //   list[j + 1] = value;
+  // }
+
+  var a = 0;
+  for (var i = 0; i < list.length; i++) {
+    for (var j = 0; j < list.length - 1 - i; j++) {
+      a++;
+      print('内层循环第$a次 i=$i 第${i + 1}个和第${j + 1}个比较 ');
+      if (list[j] > list[j + 1]) {
+        int tmp = list[j];
+        list[j] = list[j + 1];
+        list[j + 1] = tmp;
+        print('交换位置$list');
+      }
+    }
+    print('');
+  }
+  print("排序后的结果$a $list");
 }
 
 void doSomeChange(
@@ -100,14 +134,6 @@ void doSomeChange(
   myDartClass.num7 = 8;
   print("$str $str1 ${str == str1} ${myDartClass.num7}");
   print('ollllllllll$growable');
-  print(addSomeNums(1, 2, null));
-}
-
-addSomeNums(int x, int y, [int? z = 0]) {
-  int a = 0;
-  a++;
-  print('内部打印$a');
-  return () => z == null ? '空字符串' : x + y + z + a;
 }
 
 class MyDartClass {
