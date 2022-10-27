@@ -1,6 +1,5 @@
 package com.example.flutter_demo
 
-import android.app.Activity
 import android.widget.Toast
 import io.flutter.embedding.android.FlutterActivity
 

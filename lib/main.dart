@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have nice2',
+              'You have 23333',
               style: TextStyle(
                 color: Colors.amber,
                 fontSize: 18,
