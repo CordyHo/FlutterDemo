@@ -36,7 +36,8 @@ void main() {
   //final 运行时常量
   final myDartClass = MyDartClass();
   print('$str1 $str2 ${myDartClass.num5} ${MyDartClass.num6}');
-  doSomeChange(list1, str1, myDartClass, sum: 3, growable: true, news: 'new');
+  doSomeChange(list1, str1, myDartClass, sum: 3, news: 'new');
+  print("外面哦${myDartClass.num7}");
   list3?.add(0);
   list3?[0] = 1;
   print(list1);
@@ -106,7 +107,7 @@ void customSort(List<int> list) {
   for (var i = 0; i < list.length; i++) {
     for (var j = 0; j < list.length - 1 - i; j++) {
       a++;
-      print('内层循环第$a次 i=$i 第${i + 1}个和第${j + 1}个比较 ');
+      print('内层循环第$a次 i=$i 第${j + 1}个和第${j + 2}个比较 ');
       if (list[j] > list[j + 1]) {
         int tmp = list[j];
         list[j] = list[j + 1];
@@ -123,7 +124,7 @@ void doSomeChange(
   List list,
   String? str,
   MyDartClass myDartClass, {
-  var growable = true,
+  var growable = false,
   int? sum,
   required String? news,
 }) {
@@ -131,9 +132,11 @@ void doSomeChange(
   print(list == list1);
   print("是否empty = ${str1?.trim().isEmpty}");
   str = 'NO';
-  myDartClass.num7 = 8;
-  print("$str $str1 ${str == str1} ${myDartClass.num7}");
-  print('ollllllllll$growable');
+  myDartClass.num7 = 18;
+  var myDartClass2 = MyDartClass();
+  myDartClass = myDartClass2;
+  myDartClass2.num7 = 99;
+  print("$str $str1 ${str == str1} ${myDartClass.num7} ${myDartClass2.num7}");
 }
 
 class MyDartClass {
